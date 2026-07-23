@@ -9,6 +9,12 @@
       "endpoint": "api",
       "authenticationType": "xsuaa"
     },
+     {
+      "source": "^/northwind/(.*)$",
+      "target": "/V2/Northwind/Northwind.svc/$1",
+      "destination": "Northwind",
+      "authenticationType": "none"
+    },
     {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",

@@ -1,35 +1,71 @@
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller"],
+  ["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel"],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    */
-  function (Controller) {
+  function (Controller, JSONModel) {
     "use strict";
 
     return Controller.extend(
       "com.prh.workflowuimodule.controller.Main",
       {
-        onInit: function () {
+       onInit: function () {
+          // Local UI state model (separate from the OData "" model bound to Northwind)
           this.getView().setModel(
-            new sap.ui.model.json.JSONModel({
-              initialContext: JSON.stringify(
-                { someProperty: "some value" },
-                null,
-                4
-              ),
+            new JSONModel({
+              orderSelected: false,
               apiResponse: "",
-            })
+            }),
+            "app"
           );
         },
 
+        onOrderSelect: function (oEvent) {
+          var oAppModel = this.getView().getModel("app");
+          var oSelectedItem = oEvent.getParameter("listItem");
+
+          if (!oSelectedItem) {
+            oAppModel.setProperty("/orderSelected", false);
+            this._selectedOrder = null;
+            return;
+          }
+
+          var oContext = oSelectedItem.getBindingContext();
+          var oOrderData = oContext.getObject();
+
+          this._selectedOrder = oOrderData;
+          oAppModel.setProperty("/orderSelected", true);
+        },
+
         startWorkflowInstance: function () {
-          var model = this.getView().getModel();
+          var oAppModel = this.getView().getModel("app");
           var definitionId = "com.prh.orderreviewwf";
-          var initialContext = model.getProperty("/initialContext");
+
+          if (!this._selectedOrder) {
+            oAppModel.setProperty(
+              "/apiResponse",
+              "No order selected. Please select an order first."
+            );
+            return;
+          }
+
+          var oOrder = this._selectedOrder;
+
+          // Build the workflow context from the selected order
+          var context = {
+            orderInfo: {
+              orderID: oOrder.OrderID,
+              customerID: oOrder.CustomerID,
+              orderDate: oOrder.OrderDate,
+              shipName: oOrder.ShipName,
+              shipCountry: oOrder.ShipCountry,
+              freight: oOrder.Freight,
+            },
+          };
 
           var data = {
             definitionId: definitionId,
-            context: JSON.parse(initialContext),
+            context: context,
           };
 
           $.ajax({
@@ -42,14 +78,14 @@ sap.ui.define(
             },
             data: JSON.stringify(data),
             success: function (result, xhr, data) {
-              model.setProperty(
+              oAppModel.setProperty(
                 "/apiResponse",
                 JSON.stringify(result, null, 4)
               );
             },
             error: function (request, status, error) {
               var response = JSON.parse(request.responseText);
-              model.setProperty(
+              oAppModel.setProperty(
                 "/apiResponse",
                 JSON.stringify(response, null, 4)
               );

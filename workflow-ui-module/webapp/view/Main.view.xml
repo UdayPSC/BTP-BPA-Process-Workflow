@@ -1,17 +1,121 @@
-<mvc:View controllerName="com.prh.workflowuimodule.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <App id="app">
+<mvc:View
+    controllerName="com.prh.workflowuimodule.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <App id="_idapp">
         <pages>
-            <Page title="Workflow Start UI">
+            <Page
+                id="_IDGenPage"
+                title="Order Processing Workflow"
+            >
                 <content>
-                    <VBox width="100%" direction="Column" class="sapUiTinyMargin">
+                    <VBox
+                        id="_IDGenVBox1"
+                        width="100%"
+                        class="sapUiSmallMargin"
+                    >
                         <items>
-                            <Text text="Initial Workflow Context:"/>
-                            <TextArea width="100%" value="{/initialContext}" rows="8" />
-                            <Button text="Start Workflow" press="startWorkflowInstance"/>
-                            <Text text="API Response:" class="sapUiSmallMarginTop"/>
-                            <TextArea width="100%" value="{/apiResponse}" rows="14"/>
+                            <HBox
+                                id="_IDGenHBox"
+                                width="95%"
+                                justifyContent="SpaceBetween"
+                                alignItems="Center"
+                            >
+                                <items>
+                                    <Text
+                                        id="_IDGenText"
+                                        text="Select an Order:"
+                                    />
+                                    <Button
+                                        id="_IDGenButton"
+                                        text="Submit"
+                                        type="Emphasized"
+                                        enabled="{app>/orderSelected}"
+                                        press="startWorkflowInstance"
+                                    />
+                                </items>
+                            </HBox>
+                            <Table
+                                id="idOrdersTable"
+                                items="{/Orders}"
+                                mode="SingleSelectLeft"
+                                selectionChange="onOrderSelect"
+                                growing="true"
+                                growingThreshold="20"
+                            >
+                                <columns>
+                                    <Column id="_IDGenColumn">
+                                        <Text
+                                            id="_IDGenText1"
+                                            text="Order ID"
+                                        />
+                                    </Column>
+                                    <Column id="_IDGenColumn1">
+                                        <Text
+                                            id="_IDGenText2"
+                                            text="Customer ID"
+                                        />
+                                    </Column>
+                                    <Column id="_IDGenColumn2">
+                                        <Text
+                                            id="_IDGenText3"
+                                            text="Order Date"
+                                        />
+                                    </Column>
+                                    <Column id="_IDGenColumn3">
+                                        <Text
+                                            id="_IDGenText4"
+                                            text="Ship Name"
+                                        />
+                                    </Column>
+                                    <Column id="_IDGenColumn4">
+                                        <Text
+                                            id="_IDGenText5"
+                                            text="Ship Country"
+                                        />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem id="_IDGenColumnListItem">
+                                        <cells>
+                                            <Text
+                                                id="_IDGenText6"
+                                                text="{OrderID}"
+                                            />
+                                            <Text
+                                                id="_IDGenText7"
+                                                text="{CustomerID}"
+                                            />
+                                            <Text
+                                                id="_IDGenText8"
+                                                text="{ path: 'OrderDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy-MM-dd' } }"
+                                            />
+                                            <Text
+                                                id="_IDGenText9"
+                                                text="{ShipName}"
+                                            />
+                                            <Text
+                                                id="_IDGenText10"
+                                                text="{ShipCountry}"
+                                            />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <Text
+                                id="_IDGenText11"
+                                text="API Response:"
+                                class="sapUiSmallMarginTop"
+                            />
+                            <TextArea
+                                id="_IDGenTextArea"
+                                width="100%"
+                                value="{app>/apiResponse}"
+                                rows="12"
+                                editable="false"
+                            />
                         </items>
                     </VBox>
                 </content>
