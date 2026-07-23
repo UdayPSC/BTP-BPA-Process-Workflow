@@ -1,0 +1,89 @@
+{
+    "id": "orderreviewform",
+    "schemaVersion": "1.1.0",
+    "name": "OrderReviewForm",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": true,
+    "content": [
+        {
+            "id": "order_details",
+            "type": "section",
+            "title": "Order Details",
+            "content": [
+                {
+                    "id": "order_id",
+                    "type": "integer",
+                    "label": "Order ID",
+                    "readOnly": false,
+                    "value": "${context.orderInfo.orderID}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "customer_id",
+                    "type": "string",
+                    "label": "Customer ID",
+                    "readOnly": false,
+                    "value": "${context.orderInfo.customerID}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "order_date",
+                    "type": "datetime",
+                    "label": "Order Date",
+                    "readOnly": false,
+                    "value": "${context.orderInfo.orderDate}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "ship_name",
+                    "type": "string",
+                    "label": "Ship Name",
+                    "readOnly": false,
+                    "value": "${context.orderInfo.shipName}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "ship_country",
+                    "type": "string",
+                    "label": "Ship Country",
+                    "readOnly": false,
+                    "value": "${context.orderInfo.shipCountry}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "freight",
+                    "type": "string",
+                    "label": "Freight",
+                    "readOnly": false,
+                    "value": "${context.orderInfo.freight}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        }
+    ],
+    "decisions": [
+        {
+            "id": "proceed",
+            "text": "Proceed",
+            "decisionType": "positive"
+        },
+        {
+            "id": "stop",
+            "text": "Stop",
+            "decisionType": "negative"
+        }
+    ]
+}
