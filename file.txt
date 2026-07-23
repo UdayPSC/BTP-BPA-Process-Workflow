@@ -1,0 +1,93 @@
+{
+  "reviewDecision": {
+    "userDecision": "proceed"
+  },
+  "orderInfo": {
+    "orderID": 10252,
+    "customerID": "SUPRD",
+    "orderDate": "1996-07-09T00:00:00.000Z",
+    "shipName": "Suprêmes délices",
+    "shipCountry": "Belgium",
+    "freight": "51.3000"
+  },
+  "getOrderDetailsSrv": {
+    "srvURL": "/Northwind/Northwind.svc/Orders(10252)?$expand=Order_Details/Product&$format=json",
+    "resp": {
+      "odata.metadata": "https://services.odata.org/Northwind/Northwind.svc/$metadata#Orders/@Element",
+      "Order_Details": [
+        {
+          "Product": {
+            "Product": 20,
+            "ProductName": "Sir Rodney's Marmalade",
+            "SupplierID": 8,
+            "CategoryID": 3,
+            "QuantityPerUnit": "30 gift boxes",
+            "UnitPrice": "81.0000",
+            "UnitsInStock": 40,
+            "UnitsOnOrder": 0,
+            "ReorderLevel": 0,
+            "Discontinued": false
+          },
+          "OrderID": 10252,
+          "ProductID": 20,
+          "UnitPrice": "64.8000",
+          "Quantity": 40,
+          "Discount": 0.05
+        },
+        {
+          "Product": {
+            "ProductID": 33,
+            "ProductName": "Geitost",
+            "SupplierID": 15,
+            "CategoryID": 4,
+            "QuantityPerUnit": "500 g",
+            "UnitPrice": "2.5000",
+            "UnitsInStock": 112,
+            "UnitsOnOrder": 0,
+            "ReorderLevel": 20,
+            "Discontinued": false
+          },
+          "OrderID": 10252,
+          "ProductID": 33,
+          "UnitPrice": "2.0000",
+          "Quantity": 25,
+          "Discount": 0.05
+        },
+        {
+          "Product": {
+            "ProductID": 60,
+            "ProductName": "Camembert Pierrot",
+            "SupplierID": 28,
+            "CategoryID": 4,
+            "QuantityPerUnit": "15 - 300 g rounds",
+            "UnitPrice": "34.0000",
+            "UnitsInStock": 19,
+            "UnitsOnOrder": 0,
+            "ReorderLevel": 0,
+            "Discontinued": false
+          },
+          "OrderID": 10252,
+          "ProductID": 60,
+          "UnitPrice": "27.2000",
+          "Quantity": 40,
+          "Discount": 0
+        }
+      ],
+      "OrderID": 10252,
+      "CustomerID": "SUPRD",
+      "EmployeeID": 4,
+      "OrderDate": "1996-07-09T00:00:00",
+      "RequiredDate": "1996-08-06T00:00:00",
+      "ShippedDate": "1996-07-11T00:00:00",
+      "ShipVia": 2,
+      "Freight": "51.3000",
+      "ShipName": "Suprêmes délices",
+      "ShipAddress": "Boulevard Tirou, 255",
+      "ShipCity": "Charleroi",
+      "ShipRegion": null,
+      "ShipPostalCode": "B-6000",
+      "ShipCountry": "Belgium"
+    },
+    "req": {}
+  }
+}

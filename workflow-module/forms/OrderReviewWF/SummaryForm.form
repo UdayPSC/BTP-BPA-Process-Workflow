@@ -1,0 +1,67 @@
+{
+    "id": "summaryform",
+    "schemaVersion": "1.1.0",
+    "name": "SummaryForm",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": false,
+    "content": [
+        {
+            "id": "product_details",
+            "type": "collection",
+            "title": "Product Details",
+            "addEnabled": false,
+            "deleteEnabled": false,
+            "value": "${context.getOrderDetailsSrv.resp.Order_Details}",
+            "content": [
+                {
+                    "id": "product_id",
+                    "type": "integer",
+                    "label": "Product ID",
+                    "readOnly": true,
+                    "value": "${item.Product.ProductID}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "product_name",
+                    "type": "string",
+                    "label": "Product Name",
+                    "readOnly": true,
+                    "value": "${item.Product.ProductName}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "quantity",
+                    "type": "integer",
+                    "label": "Requested Quantity",
+                    "readOnly": true,
+                    "value": "${item.Quantity}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "availability",
+                    "type": "string",
+                    "label": "Availability",
+                    "readOnly": true,
+                    "value": "${item.Availability}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        }
+    ],
+    "decisions": [
+        {
+            "id": "close",
+            "text": "Close",
+            "decisionType": "positive"
+        }
+    ]
+}

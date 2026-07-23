@@ -1,0 +1,106 @@
+{
+    "id": "productavailabilityform",
+    "schemaVersion": "1.1.0",
+    "name": "ProductAvailabilityForm",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": true,
+    "content": [
+        {
+            "id": "order_details",
+            "type": "section",
+            "title": "Order Details",
+            "content": [
+                {
+                    "id": "order_id",
+                    "type": "integer",
+                    "label": "Order ID",
+                    "readOnly": false,
+                    "value": "${context.OrderID}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "ordered_quantity",
+                    "type": "integer",
+                    "label": "Ordered Quantity",
+                    "readOnly": false,
+                    "value": "${context.Quantity}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        },
+        {
+            "id": "product_details",
+            "type": "section",
+            "title": "Product Details",
+            "content": [
+                {
+                    "id": "product_id",
+                    "type": "integer",
+                    "label": "Product ID",
+                    "readOnly": false,
+                    "value": "${context.ProductDetails.ProductID}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "product_name",
+                    "type": "string",
+                    "label": "Product Name",
+                    "readOnly": false,
+                    "value": "${context.ProductDetails.ProductName}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "units_in_stock",
+                    "type": "integer",
+                    "label": "Units in Stock",
+                    "readOnly": false,
+                    "value": "${context.ProductDetails.UnitsInStock}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "supplier_id",
+                    "type": "integer",
+                    "label": "Supplier ID",
+                    "readOnly": false,
+                    "value": "${context.ProductDetails.SupplierID}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "quantity_per_unit",
+                    "type": "string",
+                    "label": "Quantity Per Unit",
+                    "readOnly": false,
+                    "value": "${context.ProductDetails.QuantityPerUnit}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        }
+    ],
+    "decisions": [
+        {
+            "id": "available",
+            "text": "Available",
+            "decisionType": "positive"
+        },
+        {
+            "id": "not_available",
+            "text": "Not Available",
+            "decisionType": "negative"
+        }
+    ]
+}
