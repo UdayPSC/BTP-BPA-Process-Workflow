@@ -1,0 +1,1 @@
+$.context.kpi.stage = "Success";
