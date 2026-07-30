@@ -8,6 +8,29 @@
             "version": "0.0.1"
         },
         "title": "{{appTitle}}",
+        "crossNavigation": {
+            "inbounds": {
+                "intentName-display": {
+                    "semanticObject": "BusinessObject",
+                    "action": "display",
+                    "title": "{{tileTitle}}",
+                    "subTitle": "{{tileSubtitle}}",
+                    "icon": "sap-icon://order",
+                    "info": "Trigger Order Review Workflow",
+                    "signature": {
+                        "parameters": {
+                            "id": {
+                                "required": false,
+                                "defaultValue": {
+                                    "value": ""
+                                }
+                            }
+                        },
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        },
         "description": "{{appDescription}}",
         "resources": "resources.json",
         "sourceTemplate": {
