@@ -20,7 +20,7 @@
 				"type": "string",
 				"value": "${context.kpi.stage}"
 			}, {
-				"id": "orderId",
+				"id": "kpiOrderId",
 				"label": "Order ID",
 				"type": "string",
 				"value": "${context.kpi.orderId}"
@@ -159,6 +159,12 @@
 				"key": "formRevision",
 				"value": "1.0"
 			}],
+			"customAttributes": [{
+				"id": "orderID",
+				"label": "Order ID",
+				"type": "string",
+				"value": "${context.orderInfo.orderID}"
+			}],
 			"id": "usertask1",
 			"name": "Order Review Form"
 		},
@@ -230,6 +236,12 @@
 			}, {
 				"key": "formRevision",
 				"value": "1.0"
+			}],
+			"customAttributes": [{
+				"id": "orderID",
+				"label": "Order ID",
+				"type": "string",
+				"value": "${context.orderInfo.orderID}"
 			}],
 			"id": "usertask4",
 			"name": "Summary"
