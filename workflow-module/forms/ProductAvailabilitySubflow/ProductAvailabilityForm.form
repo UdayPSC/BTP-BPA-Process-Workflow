@@ -89,6 +89,33 @@
                     }
                 }
             ]
+        },
+        {
+            "id": "recommendation",
+            "type": "section",
+            "title": "Recommendation",
+            "content": [
+                {
+                    "id": "recommendeddecision",
+                    "type": "string",
+                    "label": "Recommended Decision",
+                    "readOnly": false,
+                    "value": "${context.GetBusinessDecision.resp.Result[0].OrderWFOutput.RecommendedDecision}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "alert_message",
+                    "type": "string",
+                    "label": "Alert Message",
+                    "readOnly": false,
+                    "value": "${context.GetBusinessDecision.resp.Result[0].OrderWFOutput.AlertMessage}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
         }
     ],
     "decisions": [
